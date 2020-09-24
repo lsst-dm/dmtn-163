@@ -5,7 +5,7 @@
 Abstract
 ========
 
-Proprietary Rubin Observatory astronomical data must be transferred from the summit facility where the data is captured to the USDF (US Data Facility) for processing.
+Proprietary Rubin Observatory astronomical data must be transferred from the summit facility where the data is captured to the USDF (United States Data Facility) for processing.
 This document proposes a data transfer implementation strategy to maintain confidentiality of the data in transit.
 It addresses the concerns identified in DMTN-108_.
 
@@ -14,8 +14,7 @@ It addresses the concerns identified in DMTN-108_.
 Problem statement
 =================
 
-Data captured by the Charles Simonyi Survey Telescope on Cerro Pachón in Chile will be transferred from the summit facility (via dedicated private fiber) to a base facility in La Serena.
-From La Serena, it will be transferred to the :abbr:`USDF (United States Data Facility)` for processing.
+Data captured by the camera attached to the Charles Simonyi Survey Telescope on Cerro Pachón in Chile will be transferred from the summit facility (via dedicated private fiber) to the :abbr:`USDF (United States Data Facility)` for processing.
 That processing includes quickly analyzing the images for transient phenomena of interest to the astronomy research community (alert production, part of Prompt Processing), and slower and more comprehensive processing for yearly data releases (Data Release Processing).
 The alerts produced as a result of Prompt Processing will be immediately made available to the public but will not contain detailed images.
 See LPM-231_ and LPM-163_ for more information about LSST Data Products.
@@ -32,7 +31,7 @@ This implies a requirement for confidentiality in data transfer from the summit 
 Proposed implementation
 =======================
 
-Data transfer from the base facility to the USDF will use :abbr:`TLS (Transport Layer Security)` version 1.2 or later.
+Data transfer from the summit facility, or the base facility in La Serena, to the USDF will use :abbr:`TLS (Transport Layer Security)` version 1.2 or later.
 TLS will be configured on the server and client according to the guidelines in `NIST SP 800-52 Rev. 2`_, with one exception noted below.
 This includes the following requirements:
 
@@ -53,8 +52,9 @@ This exception has been made because formal FIPS 140 validation is often not ava
 
 .. _OpenSSL: https://www.openssl.org/
 
-Data transfer from the summit facility to the base facility **may** use TLS encryption as described above if, for instance, a direct TCP connection from the summit to the USDF is deemed the best transfer strategy.
-However, if there is a separate transfer from the summit facility to the base facility, it may forgo encryption if that encryption could interfere with the requirements for Prompt Processing (in particular, the 60 second bound on elapsed time from shutter close to alert production).
+We do not currently anticipate transfering the data discussed here from the summit facility to the base facility in La Serena as an intermediate hop.
+Instead, we expect to use a direct TCP and TLS connection from the summit to the USDF.
+However, if there is a need for a separate transfer from the summit facility to the base facility, it is permitted to forgo encryption if that encryption could interfere with the requirements for Prompt Processing (in particular, the 60 second bound on elapsed time from shutter close to alert production).
 This is permissible because the connection from the summit facility to the base facility is over dedicated private fiber and the networking equipment at both ends is under the control of Vera C. Rubin Observatory.
 
 Communication from the :abbr:`DAQ (Data Acquisition System)` on the telescope to its client need not be (and is not) encrypted since this communication happens entirely within the summit facility.
@@ -70,15 +70,7 @@ Data transfer will have to be reimplemented using TLS.
 .. _bbcp: https://www.slac.stanford.edu/~abh/bbcp/
 .. _SSH: https://en.wikipedia.org/wiki/Ssh_(Secure_Shell)
 
-To obtain sufficient transfer speeds over TLS, it is often necessary to chunk the data being transferred and transfer multiple chunks in parallel.
-See, for example `multipart upload for Amazon S3`_ or `parallel composite uploads with GCS`_, which offer advice for large file uploads over HTTP and TLS to users of Amazon's S3 and Google's Google Cloud Storage services.
-Cloud storage upload tools offer automatic facilities to chunk and upload large files in parallel.
-Rubin Observatory may need to implement similar functionality at the client and server ends of the transfer to achieve the necessary performance for data transfer to the USDF.
-
-.. _multipart upload for Amazon S3: https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html
-.. _parallel composite uploads with GCS: https://cloud.google.com/storage/docs/gsutil/commands/cp
-
-Finally, encryption has some additional compute processing overhead in both the client and server.
+Encryption has some additional compute processing overhead in both the client and server.
 TLS uses AES encryption, which is highly optimized in modern processors, but it is still more expensive to encrypt and decrypt the data than to transfer it unencrypted.
 In order to meet the 60 second window for Prompt Processing, this may require more processing power at both ends of the transfer.
 However, this additional processing is expected to be a small fraction of the processing required to compress the images before transfer, a generally more expensive operation.
@@ -90,6 +82,17 @@ TBD
 
 Additional analysis
 ===================
+
+Proof-of-concept testing
+------------------------
+
+We tested uploading images to Google Cloud Storage using the Google Cloud Storage API and achieved transfer times within the requirement, including both image compression and use of TLS for the transfer.
+Using parallel composit uploads was not necessary.
+The experiment did use retained HTTPS/TCP connections and disabled slow-start.
+This experiment was only from a single machine.
+See DMTN-157_ for more details.
+
+.. _DMTN-157: https://dmtn-157.lsst.io/
 
 Data encryption at rest
 -----------------------
