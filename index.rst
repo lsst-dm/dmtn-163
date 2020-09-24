@@ -87,7 +87,7 @@ Proof-of-concept testing
 ------------------------
 
 We tested uploading images to Google Cloud Storage using the Google Cloud Storage API and achieved transfer times within the requirement, including both image compression and use of TLS for the transfer.
-Using parallel composit uploads was not necessary.
+Using parallel composite uploads was not necessary.
 The experiment did use retained HTTPS/TCP connections and disabled slow-start.
 This experiment was only from a single machine.
 See DMTN-157_ for more details.
