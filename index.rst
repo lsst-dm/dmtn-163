@@ -112,7 +112,6 @@ Encryption of those images at rest is not necessary because:
   However, the data in question is destined for an eventual release to the public and the need for confidentiality is time-limited.
   Improper handling and disposal of equipment is highly unlikely to expose image data that is sufficiently recent to pose a significant security concern.
   The nature of this data is not sufficiently sensitive that it would warrant the effort required for physical theft given that all involved facilities follow standard industry best practices for physical security.
-- Only Rubin Observatory staff will have access to the systems on which data transfer and Prompt Processing are done.
-  Those staff members will necessarily, by the nature of their work, need to have access to the unencrypted images.
-  Encryption at rest would therefore not offer additional meaningful protection against, for example, compromise of a staff account.
-  By the time the data is made available to authenticated data rights holders through the Rubin Science Platform, the window of necessary confidentiality will have passed.
+- Only Rubin Observatory staff and authenticated data rights holders will have access to the data prior to a Data Release.
+  Those users will necessarily, by the nature of their work, need to have access to the unencrypted images.
+  Encryption at rest would therefore not offer additional meaningful protection against, for example, compromise of the account of a data rights holder.
