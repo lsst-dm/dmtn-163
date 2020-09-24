@@ -32,7 +32,7 @@ Proposed implementation
 =======================
 
 Data transfer from the summit facility, or the base facility in La Serena, to the USDF will use :abbr:`TLS (Transport Layer Security)` version 1.2 or later.
-TLS will be configured on the server and client according to the guidelines in the applicable :abbr:`NIST (National Institute of Science and Technology)` standard ( `NIST SP 800-52 Rev. 2`_), with one exception noted below.
+TLS will be configured on the server and client according to the guidelines in the applicable :abbr:`NIST (National Institute of Science and Technology)` standard (`NIST SP 800-52 Rev. 2`_), with one exception noted below.
 This includes the following requirements:
 
 - TLS 1.2 or 1.3 required by both client and server
@@ -61,7 +61,7 @@ Communication from the :abbr:`DAQ (Data Acquisition System)` on the telescope to
 Only Rubin Observatory staff will have access to the summit facility or any of the systems running there.
 
 Project impact
---------------
+==============
 
 Data transfer has previously been tested using bbcp_, a data transfer program for scientific data that is optimized for transfer speed.
 It encrypts the control channel (via SSH_) but not the data channel, and therefore does not meet this requirement.
@@ -75,7 +75,7 @@ TLS uses AES encryption, which is highly optimized in modern processors, but it 
 In order to meet the 60 second window for Prompt Processing, this may require more processing power at both ends of the transfer.
 However, this additional processing is expected to be a small fraction of the processing required to compress the images before transfer, a generally more expensive operation.
 
-Cost Impact
+Cost impact
 ===========
 
 Hardware (equipment) cost impact
@@ -105,7 +105,7 @@ See DMTN-157_ for more details.
 Data encryption at rest
 -----------------------
 
-Following data transfer from the telescope and Prompt Processing at the USDF, raw images will be stored and processed unencrypted and made available to authenticated data rights holders through the Rubin Science Platform.
+Following data transfer from the telescope and Prompt Processing at the USDF, raw images will be stored and processed unencrypted and later made available to authenticated data rights holders through the Rubin Science Platform.
 Encryption of those images at rest is not necessary because:
 
 - Encryption at rest primarily protects against improper handling and disposal of physical storage devices, and secondarily against theft of computing equipment.
@@ -115,3 +115,4 @@ Encryption of those images at rest is not necessary because:
 - Only Rubin Observatory staff will have access to the systems on which data transfer and Prompt Processing are done.
   Those staff members will necessarily, by the nature of their work, need to have access to the unencrypted images.
   Encryption at rest would therefore not offer additional meaningful protection against, for example, compromise of a staff account.
+  By the time the data is made available to authenticated data rights holders through the Rubin Science Platform, the window of necessary confidentiality will have passed.
