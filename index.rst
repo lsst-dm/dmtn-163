@@ -6,8 +6,8 @@ Abstract
 ========
 
 Proprietary Rubin Observatory astronomical data must be transferred from the summit facility where the data is captured to the USDF (United States Data Facility) for processing.
-This document proposes a data transfer implementation strategy to maintain confidentiality of the data in transit.
-It addresses the concerns identified in DMTN-108_.
+This document delineates a data transfer implementation strategy to maintain confidentiality of the data in transit.
+This strategy addresses the concerns identified in DMTN-108_.
 
 .. _DMTN-108: https://dmtn-108.lsst.io/
 
@@ -17,7 +17,7 @@ Problem statement
 Data captured by the camera attached to the Charles Simonyi Survey Telescope on Cerro Pachón in Chile will be transferred from the summit facility to the :abbr:`USDF (United States Data Facility)` for processing.
 That processing includes quickly analyzing the images for transient phenomena of interest to the astronomy research community (alert production, part of Prompt Processing), and slower and more comprehensive processing for yearly data releases (Data Release Processing).
 The alerts produced as a result of Prompt Processing will be immediately made available to the public but will not contain detailed images.
-See LPM-231_ and LPM-163_ for more information about LSST Data Products.
+See LPM-231_ and LPM-163_ for more information about :abbr:`LSST (Legacy Survey of Space and Time)` Data Products.
 
 .. _LPM-231: https://docushare.lsst.org/docushare/dsweb/Get/LPM-231
 .. _LPM-163: https://docushare.lsst.org/docushare/dsweb/Get/LSE-163
@@ -32,7 +32,7 @@ Proposed implementation
 =======================
 
 Data transfer from the summit facility, or the base facility in La Serena, to the USDF will use :abbr:`TLS (Transport Layer Security)` version 1.2 or later.
-TLS will be configured on the server and client according to the guidelines in `NIST SP 800-52 Rev. 2`_, with one exception noted below.
+TLS will be configured on the server and client according to the guidelines in the applicable :abbr:`NIST (National Institute of Science and Technology)` standard ( `NIST SP 800-52 Rev. 2`_), with one exception noted below.
 This includes the following requirements:
 
 - TLS 1.2 or 1.3 required by both client and server
@@ -75,10 +75,18 @@ TLS uses AES encryption, which is highly optimized in modern processors, but it 
 In order to meet the 60 second window for Prompt Processing, this may require more processing power at both ends of the transfer.
 However, this additional processing is expected to be a small fraction of the processing required to compress the images before transfer, a generally more expensive operation.
 
-Cost
-----
+Cost Impact
+===========
 
-TBD
+Hardware (equipment) cost impact
+--------------------------------
+
+[TBD]
+
+Software (implementation) cost impact
+-------------------------------------
+
+[TBD]
 
 Additional analysis
 ===================
@@ -97,7 +105,7 @@ See DMTN-157_ for more details.
 Data encryption at rest
 -----------------------
 
-During data transfer from the telescope and Prompt Processing at the USDF, raw images will be stored and processed unencrypted.
+Following data transfer from the telescope and Prompt Processing at the USDF, raw images will be stored and processed unencrypted and made available to authenticated data rights holders through the Rubin Science Platform.
 Encryption of those images at rest is not necessary because:
 
 - Encryption at rest primarily protects against improper handling and disposal of physical storage devices, and secondarily against theft of computing equipment.
