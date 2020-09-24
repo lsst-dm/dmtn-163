@@ -105,13 +105,13 @@ See DMTN-157_ for more details.
 Data encryption at rest
 -----------------------
 
-Following data transfer from the telescope and Prompt Processing at the USDF, raw images will be stored and processed unencrypted and later made available to authenticated data rights holders through the Rubin Science Platform.
+Following data transfer from the telescope to the USDF, raw images will be stored and processed unencrypted and later made available to authenticated data rights holders through the Rubin Science Platform.
 Encryption of those images at rest is not necessary because:
 
 - Encryption at rest primarily protects against improper handling and disposal of physical storage devices, and secondarily against theft of computing equipment.
   However, the data in question is destined for an eventual release to the public and the need for confidentiality is time-limited.
   Improper handling and disposal of equipment is highly unlikely to expose image data that is sufficiently recent to pose a significant security concern.
   The nature of this data is not sufficiently sensitive that it would warrant the effort required for physical theft given that all involved facilities follow standard industry best practices for physical security.
-- Only Rubin Observatory staff and authenticated data rights holders will have access to the data prior to a Data Release.
+- Only Rubin Observatory staff and authenticated data rights holders will have access to the data.
   Those users will necessarily, by the nature of their work, need to have access to the unencrypted images.
   Encryption at rest would therefore not offer additional meaningful protection against, for example, compromise of the account of a data rights holder.
