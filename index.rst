@@ -14,7 +14,7 @@ It addresses the concerns identified in DMTN-108_.
 Problem statement
 =================
 
-Data captured by the camera attached to the Charles Simonyi Survey Telescope on Cerro Pachón in Chile will be transferred from the summit facility (via dedicated private fiber) to the :abbr:`USDF (United States Data Facility)` for processing.
+Data captured by the camera attached to the Charles Simonyi Survey Telescope on Cerro Pachón in Chile will be transferred from the summit facility to the :abbr:`USDF (United States Data Facility)` for processing.
 That processing includes quickly analyzing the images for transient phenomena of interest to the astronomy research community (alert production, part of Prompt Processing), and slower and more comprehensive processing for yearly data releases (Data Release Processing).
 The alerts produced as a result of Prompt Processing will be immediately made available to the public but will not contain detailed images.
 See LPM-231_ and LPM-163_ for more information about LSST Data Products.
