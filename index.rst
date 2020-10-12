@@ -81,12 +81,28 @@ Cost impact
 Hardware (equipment) cost impact
 --------------------------------
 
-[TBD]
+End-to-end transfer to an object store via the HTTPS protocol is not expected to require additional hardware.
+The high connection startup cost is amortized over long-lived persistent connections; the incremental stream encryption cost is relatively low.
+
+However if we have to fall back to a bbcp-based transfer, the simplest way to encrypt the data channel may be to create an encrypted virtual private network over the long-haul network connection.
+This will require upgrading the licenses for the core routers in La Serena and the exit routers at the US Data Facility.
+The cost for this is estimated at $3600 per router (Cisco part ACI-SEC-XF for Nexus 9000 series NX-OS), or a total of $14,400 (FY21).
 
 Software (implementation) cost impact
 -------------------------------------
 
-[TBD]
+If an existing object store implementation is insufficient, we might need to implement our own high-performance HTTPS endpoint at the US Data Facility for the pixel data.
+The estimated cost for this is 0.25 engineer-year, including testing, or a total of approximately $50,000 (FY21).
+
+Operations cost impact
+----------------------
+
+During operations, periodic testing of the connection to ensure that it remains encrypted would be required; this might include capturing packets and verifying that they are not in plaintext.
+
+In addition, there might be incident response costs for issues with connections, certificates, etc.
+
+The costs for both of these are estimated to be negligible within the overall security operations budget.
+
 
 Additional analysis
 ===================
