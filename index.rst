@@ -101,8 +101,8 @@ During operations, periodic testing of the connection to ensure that it remains 
 
 In addition, there might be incident response costs for issues with connections, certificates, etc.
 
-The costs for both of these are estimated to be negligible within the overall security operations budget.
-
+The costs for both of these are estimated to be modest within the overall security budget, however we should augment IT/Network staffing by 0.25 FTE to compensate.
+This would be a Chilean resource and would cost around US$25,000 (FY21) per year or US$250K (FY21) for the 10 years of operations.
 
 Additional analysis
 ===================
