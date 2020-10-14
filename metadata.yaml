@@ -18,6 +18,9 @@ doc_title: "Encryption of Rubin Observatory data"
 # Author names, ordered as a list. Each author name should be formatted as 'First Last'
 authors:
   - "Russ Allbery"
+  - "Kian-Tat Lim"
+  - "Frossie Economou"
+  - "William O'Mullane"
 
 # Current document revision date, YYYY-MM-DD
 # Only set this field if you need to manually fix the revision date;
@@ -37,14 +40,17 @@ authors:
 copyright: "2020, Association of Universities for Research in Astronomy, Inc. (AURA)"
 
 # Description. A short, 1-2 sentence statemement used by document indices.
-description: "Proposes an implementation strategy for transit encryption of Rubin Observatory data to address the concerns identified in DMTN-108."
+description: >
+  Proposes an implementation strategy for transit encryption of Rubin
+  Observatory data to address the concerns identified in DMTN-108.
 
 # Abstract, if available
-# abstract: >
-#           Write your paragraph
-#           here with multiple lines.
-#
-#           You can have multiple paragraphs too.
+abstract: >
+  Proprietary Rubin Observatory astronomical data must be transferred from
+  the summit facility where the data is captured to the USDF (US Data
+  Facility) for processing.  This document proposes a data transfer
+  implementation strategy to maintain confidentiality of the data in
+  transit.  It addresses the concerns identified in DMTN-108.
 
 # URL where this document is published by Read the Docs. e.g. http://sqr-001.lsst.codes
 url: "https://dmtn-163.lsst.io"
