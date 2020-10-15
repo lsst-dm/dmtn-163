@@ -28,6 +28,13 @@ Both the data transfer to the USDF and the processing done at the USDF must comp
 The raw images and other data, prior to processing, are proprietary and not intended for public release as discussed in DMTN-108_.
 This implies a requirement for confidentiality in data transfer from the summit to the USDF.
 
+As discussed in `LPM-121`_, security controls for the Vera C. Rubin Observatory are selected from the NIST SP 800-171 controls catalog based on the risk level of the relevant system.
+Confidentiality of data transfer to the USDF corresponds to control 3.13.8 in `NIST SP 800-171 Rev. 2`_: "Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards."
+This document describes how this control will be implemented.
+
+.. _LPM-121: https://docushare.lsst.org/docushare/dsweb/Get/LPM-121
+.. _NIST SP 800-171 Rev. 2: https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final
+
 Proposed implementation
 =======================
 
