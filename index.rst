@@ -35,6 +35,11 @@ This document describes how this control will be implemented.
 .. _LPM-121: https://docushare.lsst.org/docushare/dsweb/Get/LPM-121
 .. _NIST SP 800-171 Rev. 2: https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final
 
+`NIST SP 800-172`_ documents additional security measures for protecting Controlled Unclassified Information in some situations.
+We believe this document does not apply to Rubin Observatory because it is neither a "critical program" nor a "high value asset" in the sense defined by NIST SP 800-171 and `OMB M-19-03`_.
+
+.. _OMB M-19-03: https://www.whitehouse.gov/wp-content/uploads/2018/12/M-19-03.pdf
+
 Proposed implementation
 =======================
 
