@@ -39,6 +39,7 @@ This document describes how this control will be implemented.
 We believe this document does not apply to Rubin Observatory because it is neither a "critical program" nor a "high value asset" in the sense defined by NIST SP 800-171 and `OMB M-19-03`_.
 
 .. _OMB M-19-03: https://www.whitehouse.gov/wp-content/uploads/2018/12/M-19-03.pdf
+.. _NIST SP 800-172: https://csrc.nist.gov/publications/detail/sp/800-172/final
 
 Proposed implementation
 =======================
