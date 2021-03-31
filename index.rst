@@ -98,8 +98,13 @@ End-to-end transfer to an object store via the HTTPS protocol is not expected to
 The high connection startup cost is amortized over long-lived persistent connections; the incremental stream encryption cost is relatively low.
 
 However if we have to fall back to a bbcp-based transfer, the simplest way to encrypt the data channel may be to create an encrypted virtual private network over the long-haul network connection.
-This will require upgrading the licenses for the core routers in La Serena and the exit routers at the US Data Facility.
-The cost for this is estimated at $3600 per router (Cisco part ACI-SEC-XF for Nexus 9000 series NX-OS), or a total of $14,400 (FY21).
+Current core routers won't be able to handle the encryption of 100GB links, hence it will be necessary to deploy specialized equipment in La Serena and at the US Data Facility. Cisco has made an estimation of the required network equipment and the cost of it is around $1.2M. This solution is based on a ASR1009-X chassis and includes:
+        - Cisco ASR1000 Embedded Services Processor X
+        - ASR1000 100GB QSFP Ports
+        - Cisco ASR1000 Route Processor 3
+        - ASR1000 100G Modular Interface Processor
+        - Features licenses
+        - 3 Years of support for hardware and software.
 
 Software (implementation) cost impact
 -------------------------------------
